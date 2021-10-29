@@ -24,5 +24,6 @@ Prima del corso ti invieremo una email per ricordarti l’appuntamento e raccogl
 
 ## Maggiori info
 
-Contatto Apogeo: <corsi@apogeonline.com>;
-Problemi con il repo: <serena.sensini@gmail.com>;
+Contatto Apogeo: <corsi@apogeonline.com>
+
+Problemi con il repo: <serena.sensini@gmail.com>
