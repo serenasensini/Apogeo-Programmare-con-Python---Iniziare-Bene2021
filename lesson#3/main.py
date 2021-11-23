@@ -111,3 +111,71 @@ def somma_parametri_variabili(*lista_parametri):
 #
 # print("hello", "world", "!")
 
+'''
+Scrivere un programma per un gioco che permetta di indovinare un numero pescato casualmente dal computer tramite delle indicazioni basso-alto.
+Il gioco ha le seguenti regole: il sistema estrae un numero compreso tra due valori a scelta (ad esempio, 0-100); all'utente viene richiesto di inserire
+un numero qualsiasi per cercare di indovinare il numero pensato dal sistema; questo restituirà un messaggio che dice "Il numero è troppo alto"
+se il numero inserito è maggiore del numero estratto, oppure "Il numero è troppo basso". Se il numero inserito è corretto, si stampa un messaggio
+e il gioco termina.
+
+Esempio di flusso:
+
+1. Il sistema pesca 97.
+2. L'utente inserisce in input 3.
+3. Il sistema verifica che 3 è inferiore a 97, per cui stampa un messaggio adeguato.
+
+Suggerimento: sfruttare il gioco della palla magica. 
+'''
+
+import sys
+import random
+
+# estrae un numero intero casuale tra 1 e 100
+# num_random = random.randint(1, 100)
+#
+# user_input = int(input("Inserisci un numero tra 1 e 100: "))
+#
+# flag = False
+
+# Tentativo n.1 azzeccato...
+# if num_random == user_input:
+#     print("Hai indovinato!")
+    # flag = True
+    # sys.exit()
+
+#... altrimenti continua a giocare
+# while flag == False:
+    # user_input = int(input("Inserisci un numero tra 1 e 100: "))
+    #
+    # if user_input > num_random:
+    #     print("Il numero è troppo alto! Ritenta")
+    # elif user_input < num_random:
+    #     print("Il numero è troppo basso! Ritenta")
+    # else:
+    #     print("Hai indovinato!")
+    #     flag = True
+
+
+## esercizio 18
+
+'''
+Scrivere una funzione divisibiliPerCinque che, dato il seguente array:
+[10, 23, 45, 92, 70, 1020, 71]
+stampi solo gli elementi divisibili per cinque.
+'''
+
+lista_numeri = [10, 23, 45, 92, 70, 1020, 71]
+
+
+def divisibiliPerCinque(*lista_numeri):
+    lista_divisibili = []
+
+    for numero in lista_numeri:
+        if numero % 5 == 0:
+            lista_divisibili.append(numero)
+
+    return lista_divisibili
+
+divisibili = divisibiliPerCinque(10,16,5)
+
+print("Stampa dei numeri divisibili", divisibili)

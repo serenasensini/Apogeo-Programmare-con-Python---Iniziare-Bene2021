@@ -187,6 +187,7 @@ condizioni elif per quelle in eccesso: usare risposte del tipo
 
 ```
 import sys
+import sys
 import random
 
 # estrae un numero intero casuale tra 1 e 8
