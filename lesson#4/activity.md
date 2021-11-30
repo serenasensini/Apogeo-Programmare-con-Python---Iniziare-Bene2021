@@ -3,7 +3,7 @@
 ## Esercizio n.1
 Creare due tuple che rappresentino i due
 elenchi di nomi e cognomi descritti sotto:
-* nomi: Numa, Tullo, Anco
+* nomi: Numa, Tullio, Anco
 * cognomi: Pompilio, Ostilio, Marzio
 
 ## Esercizio n.2

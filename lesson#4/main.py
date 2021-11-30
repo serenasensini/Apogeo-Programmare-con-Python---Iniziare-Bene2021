@@ -1,17 +1,17 @@
 # esempio liste
 
-thislist = ["apple", "banana", "cherry"]
-print("Initial list", thislist)
+# thislist = ["apple", "banana", "cherry"]
+# print("Initial list", thislist)
 
-thislist.append("strawberry")
-print("Updated list:", thislist)
-print("Index of 'banana: ", thislist.index("banana"))
+# thislist.append("strawberry")
+# print("Updated list:", thislist)
+# print("Index of 'banana: ", thislist.index("banana"))
 # print("Index of an unknown element: ", thislist.index("dog"))
-print("Get element with negative index:", thislist[-2])
+# print("Get element with negative index:", thislist[-2])
 
-new_list = ["mango", "papaya"]
-thislist.extend(new_list)
-print("Updated list:", thislist)
+# new_list = ["mango", "papaya"]
+# thislist.extend(new_list)
+# print("Updated list:", thislist)
 
 ## esercizi n.15
 
@@ -49,15 +49,15 @@ i numeri contenuti nella lista.
 #
 # print(x)
 
-prezzi_frutta = {'mela':1.99, 'pera':2.49, 'uva':2.99, 'mela':2.99}
-print(prezzi_frutta['mela'])
+# prezzi_frutta = {'mela':1.99, 'pera':2.49, 'uva':2.99, 'mela':2.99}
+# print(prezzi_frutta['mela'])
 
-prezzi_frutta['melone'] = 0.99
-prezzi_frutta['fragole'] = 2.29
-prezzi_frutta['pera'] = 1.99
+# prezzi_frutta['melone'] = 0.99
+# prezzi_frutta['fragole'] = 2.29
+# prezzi_frutta['pera'] = 1.99
 
-del prezzi_frutta['pera']
-print(prezzi_frutta)
+# del prezzi_frutta['pera']
+# print(prezzi_frutta)
 # print(len(prezzi_frutta))
 #
 # prezzi_frutta.update({"'mela'": "2.19"})
@@ -67,16 +67,46 @@ print(prezzi_frutta)
 
 ## set
 
-fruits = {"apple", "banana", "cherry"}
+# fruits = {"apple", "banana", "cherry"}
 # print(fruits)
 
-fruits = {"apple", "banana", "cherry", "apple"}
+# fruits = {"apple", "banana", "cherry", "apple"}
 # print(fruits)
 
-fruits.add("pear")
+# fruits.add("pear")
 
 # print(fruits)
 
 # fruits.remove("banana")
 
-print(fruits)
+# print(fruits)
+
+# Correzione esercizi
+
+# n.1
+# nomi = ('Numa', 'Tullio', 'Anco')
+# cognomi = ('Pompilio', 'Ostilio', 'Marzio')
+
+# print(nomi)
+# print(cognomi)
+
+# n.3
+
+# anagrafica = {"nome": "Giuseppe", "cognome": "Figlia"}
+#
+# anagrafica["matricola"] = 123456
+#
+# esame1 = {"nome": "Informatica", "voto": 24}
+# esame2 = {"nome": "Analisi I", "voto": 26}
+#
+# anagrafica["esami"] = [esame1, esame2]
+#
+# print(anagrafica)
+#
+# print(anagrafica["esami"][0]["voto"])
+#
+
+def somma(a,b):
+    print(a+b)
+
+somma([2,1])
