@@ -136,24 +136,24 @@ import random
 # user_input = int(input("Inserisci un numero tra 1 e 100: "))
 #
 # flag = False
-
+#
 # Tentativo n.1 azzeccato...
 # if num_random == user_input:
 #     print("Hai indovinato!")
-    # flag = True
-    # sys.exit()
-
-#... altrimenti continua a giocare
+#     flag = True
+#     sys.exit()
+#
+# ... altrimenti continua a giocare
 # while flag == False:
-    # user_input = int(input("Inserisci un numero tra 1 e 100: "))
-    #
-    # if user_input > num_random:
-    #     print("Il numero è troppo alto! Ritenta")
-    # elif user_input < num_random:
-    #     print("Il numero è troppo basso! Ritenta")
-    # else:
-    #     print("Hai indovinato!")
-    #     flag = True
+#     user_input = int(input("Inserisci un numero tra 1 e 100: "))
+#
+#     if user_input > num_random:
+#         print("Il numero è troppo alto! Ritenta")
+#     elif user_input < num_random:
+#         print("Il numero è troppo basso! Ritenta")
+#     else:
+#         print("Hai indovinato!")
+#         flag = True
 
 
 ## esercizio 18
