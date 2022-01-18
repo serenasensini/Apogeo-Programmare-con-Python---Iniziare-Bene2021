@@ -1,11 +1,38 @@
 class Zaino:
 
+    NUM_ATTREZZI = 4
+    MAX_PESO = 10
+
     def __init__(self):
         self.attrezzi = []
         self.peso = 0
 
+    def get_attrezzi(self):
+        return self.attrezzi
+
+    def get_peso(self):
+        for attrezzo in self.attrezzi:
+            self.peso += attrezzo.get_peso()
+        return self.peso
+
+    def set_attrezzi(self, attrezzi):
+        self.attrezzi = attrezzi
+
     def add_oggetto(self, oggetto):
-        self.attrezzi.append(oggetto)
+        peso_attuale = self.get_peso()
+        peso_aggiornato = oggetto.get_peso() + peso_attuale
+        if peso_aggiornato > self.MAX_PESO or len(self.attrezzi) > self.NUM_ATTREZZI:
+            print("Non posso aggiungere l'oggetto perché lo zaino è troppo carico!")
+        else:
+            self.attrezzi.append(oggetto)
+            self.get_peso()
+
+    def remove_oggetto(self, nomeOggetto):
+        index = 0
+        for oggetto in self.attrezzi:
+            if oggetto.get_nome() == nomeOggetto:
+                self.attrezzi.pop(index)
+            index += 1
 
 # STEP 0 - TODO: creare uno zaino che contenga degli attrezzi.
 '''

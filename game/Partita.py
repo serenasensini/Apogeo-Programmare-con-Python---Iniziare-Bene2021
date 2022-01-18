@@ -11,7 +11,7 @@ class Partita:
 
     def __init__(self):
         self.game_over = False
-        self.passi = 20
+        self.passi = 99
         self.zaino = Zaino()
         self.crea_stanze()
 
@@ -35,6 +35,7 @@ class Partita:
         biblioteca.set_stanza_adiacente("est", aula_magna)
         aula_magna.set_stanza_adiacente("est", laboratorio_chimica)
         aula_magna.set_stanza_adiacente("sud", segreteria)
+        aula_magna.set_stanza_adiacente("ovest", biblioteca)
         laboratorio_chimica.set_stanza_adiacente("ovest", aula_magna)
         laboratorio_chimica.set_stanza_adiacente("sud", mensa)
         segreteria.set_stanza_adiacente("nord", aula_magna)
@@ -65,11 +66,15 @@ class Partita:
 
         # STEP 4: CREARE I PERSONAGGI E AGGIUNGERE LORO GLI OGGETTI
         scienziato_pazzo = Personaggio("Frankestein", "Essere uno scienziato pazzo", "Si... può... fareee!")
-        cane_tre_teste = Personaggio("Cane a tre teste", "Sbranare in un sol boccone", "Roarrr! Ho una gran fame!!!")
+        cane_tre_teste = Personaggio("Cane a tre teste", "Sbranare in un sol boccone", "Roarrr! Ho una gran fame!!! Se non hai qualcosa per me, non potrò farti uscire!")
         professor_tozzi = Personaggio("Professor Tozzi", "Uccidere a colpi di 2", "I ragazzi non si applicano abbastanza! Mi serve proprio un buon libro di Analisi per fare un bel ripasso...")
-        sistemista = Personaggio("Sistemista", "Aggiusto cose", "Spengi e riaccendi. Funziona sempre")
+        sistemista = Personaggio("Nando", "Aggiusto cose", "Spengi e riaccendi. Funziona sempre")
 
         professor_tozzi.add_oggetto(osso)
+
+        professor_tozzi.set_messaggio("Grazie per questo fantastico volume! Finalmente un po' di cultura!")
+        cane_tre_teste.set_messaggio("Finalmente! Stavo giusto pensando di usarti come antipasto...")
+        sistemista.set_messaggio("Questo oggetto mi sarà sicuramente utile, grazie!")
 
         # STEP 5: AGGIUNGERE I PERSONAGGI NELLE STANZE
         laboratorio_chimica.add_personaggio(scienziato_pazzo)
@@ -95,7 +100,7 @@ class Partita:
         mensa.set_oggetto_desiderio(cacciavite)
 
         # STEP 8: BLOCCARE LE STANZE CHE RICHIEDONO CHE IL PERSONAGGIO ABBIA UN OGGETTO
-        mensa.blocca()
+        cucina.blocca()
         laboratorio_informatica.blocca()
         sala_server.blocca()
 
@@ -112,7 +117,7 @@ class Partita:
         self.stanza_corrente = stanza
 
     def has_vinto(self):
-        return self.stanza_vincente == self.stanza_corrente
+        return self.stanza_vincente == self.stanza_corrente and self.stanza_corrente.has_oggetto_desiderio() and self.stanza_corrente.get_personaggio().has_oggetto_desiderio()
 
     def is_game_over(self):
         return self.has_vinto() or self.game_over or self.passi == 0

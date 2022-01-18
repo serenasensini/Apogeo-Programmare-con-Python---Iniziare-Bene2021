@@ -12,21 +12,20 @@ class Stanza:
         self.numeroStanzeAdiacenti = len(self.stanzeAdiacenti)
         self.direzioni = []
         self.bloccata = False
-        self.personaggi = []
+        self.personaggio = None
         self.oggetto_desiderio = None
 
     def __repr__(self):
         print("------------")
         print("Ti trovi nella stanza:", self.nome)
-        if len(self.attrezzi) > 0:
+        if self.attrezzi and len(self.attrezzi) > 0:
             print("Il numero di attrezzi presenti nella stanza è", len(self.attrezzi))
             print("Questi sono gli attrezzi presenti:", self.list_attrezzi())
-        else:
-            print("Non c'è nessun attrezzo in questa stanza!")
-        if len(self.personaggi) > 0:
-            print("In questa stanza c'è...")
-            for personaggio in self.personaggi:
-                print(personaggio.__repr__())
+        if self.personaggio:
+            print("In questa stanza c'è uno strano personaggio...")
+            print("'''")
+            print(self.personaggio.__repr__())
+            print("'''")
 
         print("------------")
 
@@ -62,7 +61,7 @@ class Stanza:
     def add_attrezzo(self, attrezzo):
         if len(self.attrezzi) < self.NUMERO_MASSIMO_ATTREZZI:
             self.attrezzi.append(attrezzo)
-            print("Attrezzo aggiunto!")
+            print("Attrezzo aggiunto nella stanza!")
             return True
         else:
             return False
@@ -101,6 +100,7 @@ class Stanza:
             if nome_attrezzo == oggetto.get_nome():
                 self.attrezzi.pop(index)
                 break
+            index += 1
 
     def get_direzioni(self):
         return self.direzioni
@@ -111,8 +111,8 @@ class Stanza:
     def get_attrezzi(self):
         return self.attrezzi
 
-    def get_personaggi(self):
-        return self.personaggi
+    def get_personaggio(self):
+        return self.personaggio
 
     def list_attrezzi(self):
         attrezzi = []
@@ -131,7 +131,7 @@ class Stanza:
         self.bloccata = True
 
     def add_personaggio(self, personaggio):
-        self.personaggi.append(personaggio)
+        self.personaggio = personaggio
 
     def get_oggetto_desiderio(self):
         return self.oggetto_desiderio
@@ -141,7 +141,9 @@ class Stanza:
 
     def has_oggetto_desiderio(self):
         oggetto_desiderato = self.get_oggetto_desiderio()
+        if oggetto_desiderato is None:
+            return True
         for oggetto in self.attrezzi:
-            if oggetto.get_nome() == oggetto_desiderato.get_nome():
+            if oggetto.get_nome().lower() == oggetto_desiderato.get_nome().lower():
                 return True
         return False
