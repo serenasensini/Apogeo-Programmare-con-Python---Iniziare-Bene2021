@@ -1,3 +1,5 @@
+# NLTK
+
 # pip install nltk
 # nltk.download('vader_lexicon')
 # nltk.download('punkt')
@@ -97,3 +99,49 @@ test_data2 = "Bellissimo, è stato incredibile"
 test_data_features2 = {word.lower(): (word in word_tokenize(test_data2.lower())) for word in dictionary}
 
 print(classifier.classify(test_data_features2))
+
+# scikit-learn
+
+import re
+import nltk
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model.logistic import LogisticRegression
+from sklearn.metrics import classification_report
+
+df = pd.read_excel('reviews_en.xlsx', names=["text", "label"], encoding='utf8')
+print(df.head())
+
+print(df.groupby('label').describe())
+
+cl = {'positive': 1, 'negative': 0}
+df['label'] = df['label'].map(cl)
+
+corpus = []
+for i in range(0, 1998):
+    text = re.sub('[^a-zA-Z]', ' ', df['text'][i])
+    text = text.lower()
+    text = text.split()
+    ps = PorterStemmer()
+    text = [ps.stem(word) for word in text if not word in set(stopwords.words('english'))]
+    text = ' '.join(text)
+    corpus.append(text)
+
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer(max_features = 2000)
+x = cv.fit_transform(corpus).toarray()
+cl = df['label'].values
+
+x_train, x_test, y_train, y_test = train_test_split(x, cl, test_size = 0.3, random_state = 12345)
+
+# Regressione Logistica
+lr = LogisticRegression()
+lr.fit(x_train, y_train)
+lr_pred = lr.predict(x_test)
+print(classification_report(y_test, lr_pred))
+
+y = ["It was a great experience"]
+y = cv.transform(y)
+print(lr.predict(y))
